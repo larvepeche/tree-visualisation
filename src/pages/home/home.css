@@ -1,0 +1,29 @@
+.split-item {
+  border: 1px solid rgb(52, 52, 52);
+  padding: 20px;
+  margin: 20px;
+  overflow-y: scroll;
+}
+
+.result {
+  background: #eee;
+}
+.code {
+  overflow: hidden;
+  padding: 0;
+  color: white;
+}
+.code div:nth-child(2) {
+  height: 100%;
+  padding: 20px;
+}
+.toolbar {
+  padding: 10px;
+  border-bottom: 1px solid rgb(52, 52, 52);
+  display: flex;
+  justify-content: right;
+}
+button:hover {
+  cursor: pointer;
+  color: rgb(234, 255, 150);
+}

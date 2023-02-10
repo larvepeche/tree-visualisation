@@ -4,7 +4,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1b2430;
+  background: #151515;
   padding: 10px 40px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
@@ -17,32 +17,25 @@ nav {
 
 #navbar li {
   list-style: none;
-  padding: 0 20px;
+  padding: 0 10px;
   position: relative;
 }
 
 #navbar li a {
   text-decoration: none;
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: rgb(52, 52, 52);
+  padding: 10px;
+  border-radius: 6px;
   color: white;
   transition: 0.2s ease-in-out;
 }
 
 #navbar li a:hover,
 #navbar li a.active {
-  color: #17cf97;
-}
-
-#navbar li a:hover::after,
-#navbar li a.active::after {
-  content: "";
-  width: 30%;
-  height: 2px;
-  background: #17cf97;
-  position: absolute;
-  bottom: -4px;
-  left: 20px;
+  background: rgb(234, 255, 150);
+  color: black;
 }
 
 #mobile {

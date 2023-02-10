@@ -8,7 +8,7 @@ const Evaluator = () => {
     const spelContext = StandardContext.create();
     const defaultLocals = {
         user: {
-            organisationName: "USA",
+            organisationName: "FRANCE",
         },
         nomPack: "PackPremium",
         nomOffrePackEcommerce: "Shopify",
