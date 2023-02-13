@@ -11,10 +11,11 @@ const Profile = () => {
     const [profile, setProfile] = useState(JSON.stringify(jsonLocal, null, ' '));
     useEffect(() => {
         Prism.highlightAll();
+        if (localStorage.getItem('locales') !== null) setProfile(localStorage.getItem('locales')); else alert("no profile detected, default profile used");
     }, [profile])
 
     const saveJson = () => {
-        alert("test");
+        alert("this button doesn't work");
     }
     return (
         <div className="container">
@@ -27,15 +28,19 @@ const Profile = () => {
                         <Toolbar text={'Save'} handleAction={saveJson} />
                         <div>
                             <div className="json" style={{ height: "600px", width: "850px", border: "solid 1px #dddddd" }}>
-                                <JsonEditor jsonObject={profile} onChange={(output) => { setProfile(output) }} />
+                                <JsonEditor jsonObject={profile} onChange={(output) => { setProfile(output); localStorage.setItem('locales', output); }} />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="split-item jsonResult">
+                    {/* need json validator */}
+                    <p style={{ color: 'white' }}>You can paste your JSON here and press the save button (beta)</p>
                     <Editor language="json"
                         value={profile}
-                        theme="vs-dark" />
+                        theme="vs-dark"
+
+                    />
                 </div>
             </Split>
         </div>

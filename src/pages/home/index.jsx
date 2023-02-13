@@ -25,10 +25,17 @@ const Home = () => {
 
     const handleFiltering = () => {
         try {
+            // update locale Storage to persist writed code
+            localStorage.setItem('tree', editorRef.current.getValue());
+
             const TreeObject = JSON.parse(editorRef.current.getValue());
+
+            //use the default profile if the user dont have a profile in his locale storage
+            if (localStorage.getItem('locales') !== null) jsonLocal = JSON.parse(localStorage.getItem('locales')); else alert("no profile detected, default profile used");
+            // filter the pages
             let filteredTree = filterOnCondition(TreeObject, jsonLocal);
             setResult(showTree(filteredTree));
-            localStorage.setItem('tree', editorRef.current.getValue());
+
         } catch (e) {
             alert(e);
         }
