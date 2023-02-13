@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./assets/global.css";
+import "./assets/prism/prism.css";
+import Prism from "prismjs";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

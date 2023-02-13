@@ -5,7 +5,7 @@
   "nomPack": "PackPremium",
   "nomOffrePackEcommerce": "Shopify",
   "dynamicPagesVersion": 5,
-  "isCollectePaiement": true,
+  "isCollectePaiement": false,
   "pricing": false,
   "isVa": false,
   "hasNewDecouverte": false,

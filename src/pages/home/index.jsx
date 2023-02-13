@@ -7,6 +7,7 @@ import Toolbar from './toolbar';
 import Editor from "@monaco-editor/react";
 import { useRef } from "react";
 import jsonLocal from "../../data/locals.json"
+import Prism from "prismjs";
 
 const Home = () => {
     const [tree, setTree] = useState("");
@@ -24,6 +25,9 @@ const Home = () => {
             const TreeObject = JSON.parse(editorRef.current.getValue());
             let filteredTree = filterOnCondition(TreeObject, jsonLocal);
             setResult(showTree(filteredTree));
+
+            Prism.highlightAll();
+
         } catch (e) {
             alert(e);
         }
@@ -39,12 +43,12 @@ const Home = () => {
                 <div className="split-item code">
                     <Toolbar handleFiltering={handleFiltering} />
                     <div className="editor">
+                        <p className="mt-0">Paste your tree here</p>
                         <Editor
                             language="json"
                             value={tree}
                             onMount={handleEditorDidMount}
                             theme="vs-dark"
-
                         />
                     </div>
                 </div>
