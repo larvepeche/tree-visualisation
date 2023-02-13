@@ -27,7 +27,10 @@ class Navbar extends Component {
                                 <NavLink className={(navData) => (navData.isActive ? "active" : 'none')} to="evaluate">expression evaluator</NavLink>
                             </li>
                             <li>
-                                <NavLink className={(navData) => (navData.isActive ? "active" : 'none')} to="tutorial">documentation</NavLink>
+                                <NavLink className={(navData) => (navData.isActive ? "active" : 'none')} to="tutorial">Profiles</NavLink>
+                            </li>
+                            <li>
+                                <NavLink className={(navData) => (navData.isActive ? "active" : 'none')} to="tutorial">test</NavLink>
                             </li>
                         </ul>
                     </div>
