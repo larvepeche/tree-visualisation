@@ -1,3 +1,15 @@
+:root {
+  --dark-grey: #151515;
+  --dark-border-color: rgb(52, 52, 52);
+
+  /* chapter */
+  --bg-chapter: #1b2430;
+  --chapter-color: white;
+
+  /* step */
+  --bg-step: #17cf98a8;
+  --step-color: black;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -7,7 +19,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
   max-height: 100vh;
-  background: #151515;
+  background: var(--dark-grey);
 }
 
 code {
@@ -20,13 +32,13 @@ textarea {
   resize: none;
 }
 .chapter {
-  background-color: #1b2430;
-  color: white;
+  background-color: var(--bg-chapter);
+  color: var(--chapter-color);
   padding: 20px;
 }
 .step {
-  background: #17cf98a8;
-  color: black;
+  background: var(--bg-step);
+  color: var(--step-color);
   padding: 10px;
   margin-left: 20px;
 }
@@ -44,7 +56,7 @@ main {
   flex-grow: 1;
 }
 nav {
-  border-bottom: 1px solid rgb(52, 52, 52);
+  border-bottom: 1px solid var(--dark-border-color);
 }
 button.dark {
   border: none;

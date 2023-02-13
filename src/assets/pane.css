@@ -5,7 +5,7 @@
 }
 
 .gutter {
-  background-color: rgb(52, 52, 52);
+  background-color: var(--dark-border-color);
   background-repeat: no-repeat;
   background-position: 50%;
 }

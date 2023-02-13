@@ -4,9 +4,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #151515;
+  background: var(--dark-grey);
   padding: 10px 40px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 #navbar {
@@ -25,7 +24,6 @@ nav {
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  background-color: rgb(52, 52, 52);
   padding: 10px;
   border-radius: 6px;
   color: white;
