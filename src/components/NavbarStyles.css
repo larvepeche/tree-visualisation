@@ -32,8 +32,9 @@ nav {
 
 #navbar li a:hover,
 #navbar li a.active {
-  background: rgb(234, 255, 150);
-  color: black;
+  background: var(--accent-surface0);
+  color: var(--accent-text0);
+  border: 1px solid var(--accent-surface1);
 }
 
 #mobile {

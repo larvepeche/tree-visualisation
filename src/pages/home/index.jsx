@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StandardContext, SpelExpressionEvaluator } from 'spel2js';
 import { filterOnCondition, showTree } from './services';
 import Split from 'react-split'
@@ -20,14 +20,15 @@ const Home = () => {
         editorRef.current = editor;
     }
 
+    useEffect(() => {
+        Prism.highlightAll();
+    }, [result])
+
     const handleFiltering = () => {
         try {
             const TreeObject = JSON.parse(editorRef.current.getValue());
             let filteredTree = filterOnCondition(TreeObject, jsonLocal);
             setResult(showTree(filteredTree));
-
-            Prism.highlightAll();
-
         } catch (e) {
             alert(e);
         }

@@ -2,12 +2,25 @@
   --dark-grey: #151515;
   --dark-border-color: rgb(52, 52, 52);
 
+  /* linkeo */
+  --linkeo-light-blue: #edf2f7;
+  --linkeo-main-blue: #1663c1;
+  --linkeo-main-blue-2: #1560ba;
+  --lead-shadow: rgba(22, 101, 196, 0.5);
+  --black-shadow: rgba(31, 49, 71, 0.2);
+  --lead-text-1: #f6fafe;
+
+  /* button active  */
+  --accent-surface0: #dfeaf6;
+  --accent-text0: #0562d2;
+  --accent-surface1: rgba(20.900000000000016, 95.94999999999997, 186.2, 0.15);
+
   /* chapter */
-  --bg-chapter: #1b2430;
-  --chapter-color: white;
+  --bg-chapter: var(--linkeo-main-blue-2);
+  --chapter-color: var(--lead-text-1);
 
   /* step */
-  --bg-step: #17cf98a8;
+  --bg-step: white;
   --step-color: black;
 }
 body {
@@ -31,17 +44,7 @@ textarea {
   height: 80%;
   resize: none;
 }
-.chapter {
-  background-color: var(--bg-chapter);
-  color: var(--chapter-color);
-  padding: 20px;
-}
-.step {
-  background: var(--bg-step);
-  color: var(--step-color);
-  padding: 10px;
-  margin-left: 20px;
-}
+
 .error {
   color: red;
 }

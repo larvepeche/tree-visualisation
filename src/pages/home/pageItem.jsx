@@ -4,18 +4,17 @@ const PageItem = ({ item }) => {
     const { type, title, description, keepIfCondition } = item;
 
     return (
-        <p className={type}>
-            {getAttributeValue(title, true)}
-            <br />
-            {getAttributeValue(description, true)}
-            <br />
-            <br />
+        <div className={"page " + type}>
+            <p className="title">{getAttributeValue(title, true)}</p>
+
+            <p>{getAttributeValue(description, true)}</p>
+
             {keepIfCondition && <pre>
                 <code className="language-javascript">
                     {keepIfCondition}
                 </code>
             </pre>}
-        </p>
+        </div>
     )
 }
 export default PageItem;
