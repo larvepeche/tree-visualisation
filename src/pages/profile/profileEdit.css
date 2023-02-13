@@ -1,0 +1,75 @@
+.json * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+.json {
+  background: white;
+}
+/* hide add new */
+.styles-module_insertBanner__3grHO {
+  display: none;
+}
+.styles-module_jsonListOutput__14Vp_ {
+  height: 100%;
+}
+.styles-module_jsonListOutput__14Vp_ {
+  height: 100% !important;
+}
+.styles-module_jsonListOutput__14Vp_ > div:last-child {
+  padding-bottom: 20px;
+}
+
+/* edit & remove */
+.styles-module_rightContainer__2_EGZ div button {
+  border-radius: 5px;
+}
+.styles-module_rightContainer__2_EGZ div:nth-child(2) button {
+  background-color: var(--accent-surface0);
+  color: var(--accent-text0);
+  border: 1px solid var(--accent-surface1);
+}
+.json .styles-module_rightButton__2WBAU button span {
+  font-weight: 600 !important;
+}
+.styles-module_rightContainer__2_EGZ div:nth-child(3) button {
+  background: #da434388 !important;
+  color: white;
+  border: 1px solid #da434388;
+  color: white;
+}
+
+/* cancel & update */
+.styles-module_modalModifyBtnContainer__OMIy7 button span {
+  font-weight: 600 !important;
+}
+.styles-module_modalModifyBtnContainer__OMIy7 button {
+  border-radius: 5px;
+}
+.styles-module_modalModifyBtnContainer__OMIy7 button:nth-child(1) {
+  background: orange !important;
+  border: 0;
+  padding: 5px;
+}
+.styles-module_modalModifyBtnContainer__OMIy7 button:nth-child(2) {
+  background: green !important;
+  color: white;
+  border: 0;
+  padding: 5px;
+}
+.styles-module_modalBtnContainer__1t2Ba > button {
+  background: red !important;
+  color: white;
+  border: 1px solid red;
+  color: white;
+  border-radius: 5px;
+}
+.styles-module_modalBtnContainer__1t2Ba > button span {
+  font-weight: 600 !important;
+}
+.styles-module_modalContentContainer__1l9jX {
+  align-items: center;
+}
+.result {
+  padding: 0;
+}

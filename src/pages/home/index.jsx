@@ -3,7 +3,7 @@ import { StandardContext, SpelExpressionEvaluator } from 'spel2js';
 import { filterOnCondition, showTree } from './services';
 import Split from 'react-split'
 import './home.css';
-import Toolbar from './toolbar';
+import Toolbar from '../../components/toolbar';
 import Editor from "@monaco-editor/react";
 import { useRef } from "react";
 import jsonLocal from "../../data/locals.json"

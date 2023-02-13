@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import Evaluator from "./pages/evaluator";
 import Navbar from "./components/navbar";
 import Tutorial from "./pages/tutorial/index";
+import Profile from "./pages/profile/index";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/evaluate" element={<Evaluator />}></Route>
-          <Route path="/tutorial" element={<Tutorial />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
         </Routes>
       </main>
     </BrowserRouter>
