@@ -8,10 +8,14 @@ import Editor from '@monaco-editor/react';
 import Toolbar from '../../components/toolbar';
 
 const Profile = () => {
-    const [profile, setProfile] = useState(JSON.stringify(jsonLocal));
+    const [profile, setProfile] = useState(JSON.stringify(jsonLocal, null, ' '));
     useEffect(() => {
         Prism.highlightAll();
     }, [profile])
+
+    const saveJson = () => {
+        alert("test");
+    }
     return (
         <div className="container">
             <Split sizes={[50, 50]} minSize={400}
@@ -20,7 +24,7 @@ const Profile = () => {
             >
                 <div className="split-item code">
                     <div className="editor">
-                        <Toolbar text={'Save'} />
+                        <Toolbar text={'Save'} handleAction={saveJson} />
                         <div>
                             <div className="json" style={{ height: "600px", width: "850px", border: "solid 1px #dddddd" }}>
                                 <JsonEditor jsonObject={profile} onChange={(output) => { setProfile(output) }} />
@@ -28,7 +32,7 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <div className="split-item result">
+                <div className="split-item jsonResult">
                     <Editor language="json"
                         value={profile}
                         theme="vs-dark" />

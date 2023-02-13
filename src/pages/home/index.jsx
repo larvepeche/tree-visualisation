@@ -10,7 +10,6 @@ import jsonLocal from "../../data/locals.json"
 import Prism from "prismjs";
 
 const Home = () => {
-    const [tree, setTree] = useState("");
     const [result, setResult] = useState("");
     const editorRef = useRef(null);
     const spelContext = StandardContext.create();
@@ -29,12 +28,14 @@ const Home = () => {
             const TreeObject = JSON.parse(editorRef.current.getValue());
             let filteredTree = filterOnCondition(TreeObject, jsonLocal);
             setResult(showTree(filteredTree));
+            localStorage.setItem('tree', editorRef.current.getValue());
         } catch (e) {
             alert(e);
         }
     }
 
     const print = result;
+    const savedText = localStorage.getItem('tree');
     return (
         <div className="container">
             <Split sizes={[60, 30]} minSize={400}
@@ -42,12 +43,12 @@ const Home = () => {
                 gutterSize={20}
             >
                 <div className="split-item code">
-                    <Toolbar handleFiltering={handleFiltering} />
+                    <Toolbar handleAction={handleFiltering} />
                     <div className="editor">
                         <p className="mt-0">Paste your tree here</p>
                         <Editor
+                            value={savedText !== null ? savedText : null}
                             language="json"
-                            value={tree}
                             onMount={handleEditorDidMount}
                             theme="vs-dark"
                         />

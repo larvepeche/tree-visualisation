@@ -1,7 +1,7 @@
-const Toolbar = ({ handleFiltering, text }) => {
+const Toolbar = ({ handleAction, text }) => {
     return (
         <div className="toolbar">
-            <button className="dark" onClick={handleFiltering}>
+            <button className="dark" onClick={handleAction}>
                 <div>
                     {text ? text : 'executer'} <svg
                         fill="#ffffff"
