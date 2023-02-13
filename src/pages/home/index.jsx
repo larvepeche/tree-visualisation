@@ -3,52 +3,26 @@ import { StandardContext, SpelExpressionEvaluator } from 'spel2js';
 import { filterOnCondition, showTree } from './services';
 import Split from 'react-split'
 import './home.css';
+import Toolbar from './toolbar';
+import Editor from "@monaco-editor/react";
+import { useRef } from "react";
+import jsonLocal from "../../data/locals.json"
 
 const Home = () => {
     const [tree, setTree] = useState("");
     const [result, setResult] = useState("");
+    const editorRef = useRef(null);
     const spelContext = StandardContext.create();
     const [error, setError] = useState("");
-    const defaultLocals = {
-        user: {
-            organisationName: "USA",
-        },
-        nomPack: "PackPremium",
-        nomOffrePackEcommerce: "Shopify",
-        dynamicPagesVersion: 5,
-        isCollectePaiement: false,
-        pricing: false,
-        isVa: false,
-        hasNewDecouverte: false,
-        isPricingGoogle: false,
-        isAcquisition: false,
-        hasFs: false,
-        userDisplayFs: false,
-        isFsOnly: false,
-        offreVerticalisationRestaurantsAvailable: false,
-        offreVerticalisationBeauteAvailable: false,
-        offreVerticalisationConstructionndOeuvreAvailable: false,
-        offreVerticalisationCommerceAvailable: false,
-        offreVerticalisationImmobilierAvailable: false,
-        offreVerticalisationAutoAvailable: false,
-        isTeleventeVD: false,
-        offreVerticalisationAvailable: false,
-        isAh: false,
-        orderHasNewPack: false,
-        isSEOBooster: false,
-        isEssentiel: false,
-        isSEO: false,
-        isAdwordPricing: false,
-        hasFacebook: false,
-        deliverInPack: false,
-        clientKnowsNewSolutionsConfigurationPage: false,
-        eSignature: false,
-    };
+
+    function handleEditorDidMount(editor, monaco) {
+        editorRef.current = editor;
+    }
 
     const handleFiltering = () => {
         try {
-            const TreeObject = JSON.parse(tree);
-            let filteredTree = filterOnCondition(TreeObject, defaultLocals)
+            const TreeObject = JSON.parse(editorRef.current.getValue());
+            let filteredTree = filterOnCondition(TreeObject, jsonLocal);
             setResult(showTree(filteredTree));
         } catch (e) {
             alert(e);
@@ -58,52 +32,20 @@ const Home = () => {
     const print = result;
     return (
         <div className="container">
-            <Split minSize={400}
+            <Split sizes={[60, 30]} minSize={400}
                 className="split"
                 gutterSize={20}
             >
                 <div className="split-item code">
-                    <div className="toolbar">
-                        <button className="dark" onClick={handleFiltering}>
-                            <div>
+                    <Toolbar handleFiltering={handleFiltering} />
+                    <div className="editor">
+                        <Editor
+                            language="json"
+                            value={tree}
+                            onMount={handleEditorDidMount}
+                            theme="vs-dark"
 
-
-                                Executer
-                                <svg
-                                    fill="#ffffff"
-                                    height="30px"
-                                    width="30px"
-                                    viewBox="-6 -6 72.00 72.00"
-                                    stroke="#ffffff"
-                                    strokeWidth="2.52">
-                                    <g strokeWidth="0"></g>
-                                    <g
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        stroke="#CCCCCC"
-                                        strokeWidth="0.72">
-                                        <g>
-                                            <path
-                                                d="M45.563,29.174l-22-15c-0.307-0.208-0.703-0.231-1.031-0.058C22.205,14.289,22,14.629,22,15v30 c0,0.371,0.205,0.711,0.533,0.884C22.679,45.962,22.84,46,23,46c0.197,0,0.394-0.059,0.563-0.174l22-15 C45.836,30.64,46,30.331,46,30S45.836,29.36,45.563,29.174z M24,43.107V16.893L43.225,30L24,43.107z"></path>
-                                            <path
-                                                d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M30,58C14.561,58,2,45.439,2,30 S14.561,2,30,2s28,12.561,28,28S45.439,58,30,58z"></path>
-                                        </g>
-                                    </g>
-                                    <g>
-                                        <g>
-                                            <path
-                                                d="M45.563,29.174l-22-15c-0.307-0.208-0.703-0.231-1.031-0.058C22.205,14.289,22,14.629,22,15v30 c0,0.371,0.205,0.711,0.533,0.884C22.679,45.962,22.84,46,23,46c0.197,0,0.394-0.059,0.563-0.174l22-15 C45.836,30.64,46,30.331,46,30S45.836,29.36,45.563,29.174z M24,43.107V16.893L43.225,30L24,43.107z"></path>
-                                            <path
-                                                d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M30,58C14.561,58,2,45.439,2,30 S14.561,2,30,2s28,12.561,28,28S45.439,58,30,58z"></path>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </div>
-                        </button>
-                    </div>
-                    <div>
-                        <p>paste tree</p>
-                        <textarea value={tree} onChange={(e) => { setTree(e.target.value) }} />
+                        />
                     </div>
                 </div>
                 <div className="split-item result">
