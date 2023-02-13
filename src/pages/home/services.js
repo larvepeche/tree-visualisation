@@ -12,7 +12,6 @@ export function filterOnCondition(tree, locals) {
           item.keepIfCondition
         );
         let Pageresult = compiledExpression.eval(spelContext, variables);
-        console.log(item.title, " : ", Pageresult);
         if (!Pageresult) {
           return false;
         }
