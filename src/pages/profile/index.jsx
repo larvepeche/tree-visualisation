@@ -8,11 +8,16 @@ import Editor from '@monaco-editor/react';
 import Toolbar from '../../components/toolbar';
 
 const Profile = () => {
-    const [profile, setProfile] = useState(JSON.stringify(jsonLocal, null, ' '));
+    const stored = localStorage.getItem('locales');
+    const [profile, setProfile] = useState(stored ? stored : JSON.stringify(jsonLocal, null, ' '));
     useEffect(() => {
         Prism.highlightAll();
-        if (localStorage.getItem('locales') !== null) setProfile(localStorage.getItem('locales')); else alert("no profile detected, default profile used");
     }, [profile])
+
+    const handleProfileChange = (output) => {
+        setProfile(output);
+        localStorage.setItem('locales', output);
+    }
 
     const saveJson = () => {
         alert("this button doesn't work");
@@ -27,19 +32,19 @@ const Profile = () => {
                     <div className="editor">
                         <Toolbar text={'Save'} handleAction={saveJson} />
                         <div>
-                            <div className="json" style={{ height: "600px", width: "850px", border: "solid 1px #dddddd" }}>
-                                <JsonEditor jsonObject={profile} onChange={(output) => { setProfile(output); localStorage.setItem('locales', output); }} />
+                            <div className="json" style={{ height: "600px", width: "850px", border: "solid 1px #dddddd", margin: '20px auto' }}>
+                                <JsonEditor jsonObject={profile} onChange={(output) => { handleProfileChange(output); }} />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="split-item jsonResult">
                     {/* need json validator */}
+                    <Toolbar text={'save'} handleAction={saveJson} />
                     <p style={{ color: 'white' }}>You can paste your JSON here and press the save button (beta)</p>
                     <Editor language="json"
                         value={profile}
                         theme="vs-dark"
-
                     />
                 </div>
             </Split>
