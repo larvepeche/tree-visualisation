@@ -1,27 +1,39 @@
 import { useState, useEffect, useRef } from "react";
-import { StandardContext, SpelExpressionEvaluator } from 'spel2js';
-import { filterOnCondition, showTree } from '../../service/services';
 import Split from 'react-split'
-import '../../assets/css/main.css';
-import Toolbar from '../../components/toolbar';
-import Editor from "@monaco-editor/react";
-import jsonLocal from "../../data/locals.json"
+import '../../assets/css/customJsonEditor.css';
 import Prism from "prismjs";
+import jsonLocal from "../../data/locals.json";
+import { JsonEditor } from 'react-jsondata-editor';
+import Editor from '@monaco-editor/react';
+import Toolbar from '../../components/toolbar';
+import { filterOnCondition, showTree } from '../../service/services';
+import { StandardContext } from 'spel2js';
 
-const Home = () => {
+
+const FullView = () => {
+    const stored = localStorage.getItem('locales');
+    const [profile, setProfile] = useState(stored ? stored : JSON.stringify(jsonLocal, null, ' '));
     const [result, setResult] = useState("");
     const editorRef = useRef(null);
     const spelContext = StandardContext.create();
     const [error, setError] = useState("");
 
+    useEffect(() => {
+        Prism.highlightAll();
+    }, [profile, result])
+
     function handleEditorDidMount(editor, monaco) {
         editorRef.current = editor;
     }
 
-    useEffect(() => {
-        Prism.highlightAll();
-    }, [result])
+    const handleProfileChange = (output) => {
+        setProfile(output);
+        localStorage.setItem('locales', output);
+    }
 
+    const saveJson = () => {
+        alert("this button doesn't work");
+    }
     const handleFiltering = () => {
         try {
             // update locale Storage to persist writed code
@@ -44,12 +56,23 @@ const Home = () => {
     const savedText = localStorage.getItem('tree');
     return (
         <div className="container">
-            <Split sizes={[60, 30]} minSize={400}
+            <Split minSize={300}
                 className="split"
                 gutterSize={20}
             >
                 <div className="split-item code">
-                    <Toolbar handleAction={handleFiltering} />
+                    <div className="editor">
+                        <Toolbar text={'Save'} handleAction={saveJson} />
+                        <div>
+                            <div className="json" style={{ height: "600px", width: "850px", border: "solid 1px #dddddd", margin: '20px auto' }}>
+                                <JsonEditor jsonObject={profile} onChange={(output) => { handleProfileChange(output); }} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="split-item code">
+                    <Toolbar text={'Visualize'} handleAction={handleFiltering} />
                     <p className="ml-1">Paste your tree here</p>
                     <div className="pt-0 editor">
                         <Editor
@@ -60,6 +83,8 @@ const Home = () => {
                         />
                     </div>
                 </div>
+
+
                 <div className="split-item result">
                     <p>selected pages</p>
                     {print}
@@ -68,4 +93,4 @@ const Home = () => {
         </div>
     );
 }
-export default Home; 
+export default FullView; 

@@ -5,6 +5,7 @@ import Evaluator from "./pages/evaluator";
 import Navbar from "./components/navbar";
 import Tutorial from "./pages/tutorial/index";
 import Profile from "./pages/profile/index";
+import FullView from "./pages/fullView/index";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/evaluate" element={<Evaluator />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/fullview" element={<Profile />}></Route>
+          <Route path="/fullview" element={<FullView />}></Route>
         </Routes>
       </main>
     </BrowserRouter>

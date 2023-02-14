@@ -6,18 +6,11 @@ import jsonLocal from "../../data/locals.json";
 import { JsonEditor } from 'react-jsondata-editor';
 import Editor from '@monaco-editor/react';
 import Toolbar from '../../components/toolbar';
+import CustomJsonEditor from "../../components/CustomJsonEditor/CustomJsonEditor";
 
 const Profile = () => {
     const stored = localStorage.getItem('locales');
     const [profile, setProfile] = useState(stored ? stored : JSON.stringify(jsonLocal, null, ' '));
-    useEffect(() => {
-        Prism.highlightAll();
-    }, [profile])
-
-    const handleProfileChange = (output) => {
-        setProfile(output);
-        localStorage.setItem('locales', output);
-    }
 
     const saveJson = () => {
         alert("this button doesn't work");
@@ -31,11 +24,7 @@ const Profile = () => {
                 <div className="split-item code">
                     <div className="editor">
                         <Toolbar text={'Save'} handleAction={saveJson} />
-                        <div>
-                            <div className="json" style={{ height: "600px", width: "850px", border: "solid 1px #dddddd", margin: '20px auto' }}>
-                                <JsonEditor jsonObject={profile} onChange={(output) => { handleProfileChange(output); }} />
-                            </div>
-                        </div>
+                        <CustomJsonEditor profile={profile} setProfile={setProfile} />
                     </div>
                 </div>
                 <div className="split-item jsonResult">

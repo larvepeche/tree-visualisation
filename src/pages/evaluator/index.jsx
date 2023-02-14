@@ -1,57 +1,67 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { StandardContext, SpelExpressionEvaluator } from 'spel2js';
+import CustomJsonEditor from "../../components/CustomJsonEditor/CustomJsonEditor";
+import jsonLocal from "../../data/locals.json";
+import Split from 'react-split'
+import '../../assets/css/customJsonEditor.css';
+import Editor from '@monaco-editor/react';
+import Toolbar from '../../components/toolbar';
+
 
 
 const Evaluator = () => {
-    const [expression, setExpression] = useState("");
-    const [result, setResult] = useState("");
+    const stored = localStorage.getItem('locales');
+    const [result, setResult] = useState(" ");
     const spelContext = StandardContext.create();
-    const defaultLocals = {
-        user: {
-            organisationName: "FRANCE",
-        },
-        nomPack: "PackPremium",
-        nomOffrePackEcommerce: "Shopify",
-        dynamicPagesVersion: 5,
-        isCollectePaiement: false,
-        pricing: false,
-        isVa: false,
-        hasNewDecouverte: false,
-        isPricingGoogle: false,
-        isAcquisition: false,
-        hasFs: false,
-        userDisplayFs: false,
-        isFsOnly: false,
-        offreVerticalisationRestaurantsAvailable: false,
-        offreVerticalisationBeauteAvailable: false,
-        offreVerticalisationConstructionndOeuvreAvailable: false,
-        offreVerticalisationCommerceAvailable: false,
-        offreVerticalisationImmobilierAvailable: false,
-        offreVerticalisationAutoAvailable: false,
-        isTeleventeVD: false,
-        offreVerticalisationAvailable: false,
-        isAh: false,
-        orderHasNewPack: false,
-        isSEOBooster: false,
-        isEssentiel: false,
-        isSEO: false,
-        isAdwordPricing: false,
-        hasFacebook: false,
-        deliverInPack: false,
-        clientKnowsNewSolutionsConfigurationPage: false,
-        eSignature: false,
-    };
+    const [profile, setProfile] = useState(stored ? stored : JSON.stringify(jsonLocal, null, ' '));
+    const editorRef = useRef("");
 
-    const handleFiltering = () => {
-        const compiledExpression = SpelExpressionEvaluator.compile(expression);
-        setResult(compiledExpression.eval(spelContext, defaultLocals));
+    function handleEditorDidMount(editor) {
+        editorRef.current = editor;
+    }
+
+    const handleEvaluation = () => {
+        if (!editorRef.current.getValue()) return;
+        try {
+            const compiledExpression = SpelExpressionEvaluator.compile(editorRef.current.getValue());
+            let Pageresult = compiledExpression.eval(spelContext, JSON.parse(profile));
+            if (!Pageresult) {
+                setResult("hidden")
+            } else {
+                setResult("SHowed")
+            }
+
+        } catch (e) {
+            alert(e.message)
+        }
+    }
+    const showResult = () => {
+        alert(result)
     }
     return (
-        <div>
-            <textarea value={expression} onChange={(e) => { setExpression(e.target.value) }} /><br />
-            <button onClick={handleFiltering}>transform</button>
-            <hr />
-            <p>result : {result.toString()}</p>
+        <div className="container">
+            <Split sizes={[50, 50]} minSize={400}
+                className="split"
+                gutterSize={20}
+            >
+                <div className="split-item code">
+                    <div className="editor">
+                        <Toolbar text={result} handleAction={showResult} />
+                        <CustomJsonEditor profile={profile} setProfile={setProfile} />
+                    </div>
+                </div>
+                <div className="split-item jsonResult">
+                    {/* need json validator */}
+                    <Toolbar text={'evaluate'} handleAction={handleEvaluation} />
+                    <p className="ml-1" style={{ color: 'white' }}>Write your expression and press the evaluate button to run it</p>
+                    <div class="split-child">
+                        <Editor language="kotlin"
+                            theme="vs-dark"
+                            onMount={handleEditorDidMount}
+                        />
+                    </div>
+                </div>
+            </Split>
         </div>
     );
 }
