@@ -40,7 +40,6 @@
 }
 .code .editor {
   min-height: 50vh;
-  padding: 20px;
   flex-grow: 1;
 }
 .toolbar {

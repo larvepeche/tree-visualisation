@@ -41,11 +41,13 @@ const Profile = () => {
                 <div className="split-item jsonResult">
                     {/* need json validator */}
                     <Toolbar text={'save'} handleAction={saveJson} />
-                    <p style={{ color: 'white' }}>You can paste your JSON here and press the save button (beta)</p>
-                    <Editor language="json"
-                        value={profile}
-                        theme="vs-dark"
-                    />
+                    <p className="ml-1" style={{ color: 'white' }}>You can paste your JSON here and press the save button (beta)</p>
+                    <div class="split-child">
+                        <Editor language="json"
+                            value={profile}
+                            theme="vs-dark"
+                        />
+                    </div>
                 </div>
             </Split>
         </div>

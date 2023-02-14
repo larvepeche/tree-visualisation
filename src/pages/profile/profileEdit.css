@@ -82,4 +82,11 @@
 /* custom */
 .jsonResult {
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.split-child {
+  flex-grow: 1;
+  min-height: 50vh;
 }

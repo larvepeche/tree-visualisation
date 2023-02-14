@@ -20,7 +20,12 @@ class Navbar extends Component {
                         <ul id="navbar" >
                             <li>
                                 <NavLink className={(navData) => (navData.isActive ? "active" : 'none')} to="/" >
-                                    Home
+                                    Full view
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className={(navData) => (navData.isActive ? "active" : 'none')} to="/" >
+                                    Tree view
                                 </NavLink>
                             </li>
                             <li>

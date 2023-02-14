@@ -51,8 +51,8 @@ const Home = () => {
             >
                 <div className="split-item code">
                     <Toolbar handleAction={handleFiltering} />
-                    <div className="editor">
-                        <p className="mt-0">Paste your tree here</p>
+                    <p className="ml-1">Paste your tree here</p>
+                    <div className="pt-0 editor">
                         <Editor
                             value={savedText !== null ? savedText : null}
                             language="json"
