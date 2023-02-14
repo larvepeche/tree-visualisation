@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/evaluate" element={<Evaluator />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/fullview" element={<Profile />}></Route>
         </Routes>
       </main>
     </BrowserRouter>

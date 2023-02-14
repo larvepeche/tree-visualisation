@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Split from 'react-split'
-import './profileEdit.css';
+import '../../assets/css/customJsonEditor.css';
 import Prism from "prismjs";
 import jsonLocal from "../../data/locals.json";
 import { JsonEditor } from 'react-jsondata-editor';

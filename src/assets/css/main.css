@@ -52,3 +52,14 @@ button:hover {
   cursor: pointer;
   color: rgb(234, 255, 150);
 }
+/* custom */
+.jsonResult {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.split-child {
+  flex-grow: 1;
+  min-height: 50vh;
+}

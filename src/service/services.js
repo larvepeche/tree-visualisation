@@ -1,5 +1,5 @@
 import { StandardContext, SpelExpressionEvaluator } from "spel2js";
-import PageItem from "./pageItem";
+import PageItem from "../components/pageItem";
 
 export function filterOnCondition(tree, locals) {
   const variables = locals;

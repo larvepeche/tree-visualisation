@@ -1,4 +1,4 @@
-import './profileEdit.css';
+
 import '../../assets/pane.css'
 import { JsonEditor } from "react-jsondata-editor";
 import jsonLocal from "../../data/locals.json";

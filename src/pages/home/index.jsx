@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { StandardContext, SpelExpressionEvaluator } from 'spel2js';
-import { filterOnCondition, showTree } from './services';
+import { filterOnCondition, showTree } from '../../service/services';
 import Split from 'react-split'
-import './home.css';
+import '../../assets/css/main.css';
 import Toolbar from '../../components/toolbar';
 import Editor from "@monaco-editor/react";
 import { useRef } from "react";

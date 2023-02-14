@@ -19,7 +19,7 @@ class Navbar extends Component {
                     <div>
                         <ul id="navbar" >
                             <li>
-                                <NavLink className={(navData) => (navData.isActive ? "active" : 'none')} to="/" >
+                                <NavLink className={(navData) => (navData.isActive ? "active" : 'none')} to="/fullview" >
                                     Full view
                                 </NavLink>
                             </li>

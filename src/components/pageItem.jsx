@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getAttributeValue } from '../../service/utils';
+import { getAttributeValue } from '../service/utils';
 const PageItem = ({ item }) => {
     const { type, title, description, keepIfCondition } = item;
 

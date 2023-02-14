@@ -4,7 +4,7 @@
     sans-serif;
 }
 .json {
-  background: white;
+  background: var(--linkeo-light-blue);
 }
 /* hide add new */
 .styles-module_insertBanner__3grHO {
@@ -69,4 +69,12 @@
 }
 .styles-module_modalContentContainer__1l9jX {
   align-items: center;
+}
+
+/* edit modal */
+.styles-module_modalContainer__3p6-8 {
+  background: var(--dark-grey);
+}
+.styles-module_modalContainer__3p6-8 label {
+  color: white;
 }
