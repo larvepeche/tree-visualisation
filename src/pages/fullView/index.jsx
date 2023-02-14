@@ -56,7 +56,7 @@ const FullView = () => {
     const savedText = localStorage.getItem('tree');
     return (
         <div className="container">
-            <Split minSize={300}
+            <Split sizes={[30, 50, 20]} minSize={0}
                 className="split"
                 gutterSize={20}
             >
@@ -90,7 +90,7 @@ const FullView = () => {
                     {print}
                 </div>
             </Split>
-        </div>
+        </div >
     );
 }
 export default FullView; 
