@@ -13,7 +13,7 @@ const CustomJsonEditor = ({ profile, setProfile }) => {
     }, [profile])
     return (
         <div>
-            <div className="json" style={{ height: "600px", width: "850px", border: "solid 1px #dddddd", margin: '20px auto' }}>
+            <div className="json" style={{ height: "600px", minWidth: "850px", border: "solid 1px #dddddd", margin: '20px auto' }}>
                 <JsonEditor jsonObject={profile} onChange={(output) => { handleProfileChange(output); }} />
             </div>
         </div>
