@@ -8,6 +8,7 @@ import Editor from '@monaco-editor/react';
 import Toolbar from '../../components/toolbar';
 import { filterOnCondition, showTree } from '../../service/services';
 import { StandardContext } from 'spel2js';
+import CustomJsonEditor from "../../components/CustomJsonEditor/CustomJsonEditor";
 
 
 const FullView = () => {
@@ -24,11 +25,6 @@ const FullView = () => {
 
     function handleEditorDidMount(editor, monaco) {
         editorRef.current = editor;
-    }
-
-    const handleProfileChange = (output) => {
-        setProfile(output);
-        localStorage.setItem('locales', output);
     }
 
     const saveJson = () => {
@@ -63,11 +59,7 @@ const FullView = () => {
                 <div className="split-item code">
                     <div className="editor">
                         <Toolbar text={'Save'} handleAction={saveJson} />
-                        <div>
-                            <div className="json" style={{ height: "600px", width: "850px", border: "solid 1px #dddddd", margin: '20px auto' }}>
-                                <JsonEditor jsonObject={profile} onChange={(output) => { handleProfileChange(output); }} />
-                            </div>
-                        </div>
+                        <CustomJsonEditor profile={profile} setProfile={setProfile} />
                     </div>
                 </div>
 

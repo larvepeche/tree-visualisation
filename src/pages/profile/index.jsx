@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import Split from 'react-split'
 import '../../assets/css/customJsonEditor.css';
-import Prism from "prismjs";
 import jsonLocal from "../../data/locals.json";
-import { JsonEditor } from 'react-jsondata-editor';
 import Editor from '@monaco-editor/react';
 import Toolbar from '../../components/toolbar';
 import CustomJsonEditor from "../../components/CustomJsonEditor/CustomJsonEditor";
