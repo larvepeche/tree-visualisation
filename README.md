@@ -40,7 +40,7 @@ Dynamic page evaluator have 4 main pages
 
 This is where you paste your JSON tree, push the execute button and see what pages are displayed according to your variables
 
-tree json example : https://bitbucket.org/linkeodt/pcetooling/src/master/src/data/presentation.json
+tree json example : https://github.com/larvepeche/tree-visualisation/blob/master/src/data/presentation.json
 
 ### Profile editor (variables)
 
@@ -48,7 +48,7 @@ Speaking of variables, this page integrate a JSON editor where you can change va
 
 It also display a preview of your active profile JSON file.
 
-profile json example : https://bitbucket.org/linkeodt/pcetooling/src/master/src/data/locals.json
+profile json example : https://github.com/larvepeche/tree-visualisation/blob/master/src/data/locals.json
 
 !! : this example is used as your default profile. Once you change it, your changes are saved in a [localStorage](https://developer.mozilla.org/fr/docs/Web/API/Window/localStorage)
 
